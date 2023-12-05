@@ -18,7 +18,7 @@ function listeners(url1,tabs) {
             chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
                 let id = tabs[0].id;
 	        let url2 = tabs[0].url;
-	        if (url2 != url1 && String(url2.slice(0,30)) != "https://docs.google.com/forms/" && String(url2.slice(0,20)) != "chrome://extensions/" && String(url2.slice(0,22)) != "docs.google.com/forms/") {
+	        if (url2 != url1 && String(url2.slice(0,30)) != "https://docs.google.com/forms/" && String(url2.slice(0,22)) != "docs.google.com/forms/") {
                     /*
                     chrome.notifications.create('', {
                         title: 'Tab has been closed',
@@ -80,7 +80,7 @@ chrome.runtime.onMessage.addListener(() => {
         val = Date.now();
         chrome.storage.local.get('time', function(data) {
             if (typeof data.time !== 'undefined') {
-                if (data.time + 1800000 >= val) {
+                if (data.time + 1800000 <= val) {
                     chrome.scripting.executeScript({target : {tabId:tabs[0].id}, files : ["texteditdisable.js"],}, () => {chrome.storage.local.set({time:val});});
                 }
             } else {
