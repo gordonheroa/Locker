@@ -80,7 +80,7 @@ chrome.runtime.onMessage.addListener(() => {
         val = Date.now();
         chrome.storage.local.get('time', function(data) {
             if (typeof data.time !== 'undefined') {
-                if (data.time + 1800000 <= val) {
+                if (data.time + 1800000 >= val) {
                     chrome.scripting.executeScript({target : {tabId:tabs[0].id}, files : ["texteditdisable.js"],}, () => {chrome.storage.local.set({time:val});});
                 }
             } else {
