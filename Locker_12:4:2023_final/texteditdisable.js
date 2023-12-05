@@ -6,6 +6,6 @@ fields.forEach(function(item) {
 	item.selected = true;
 	setTimeout( () => {
             item.disabled=true;
-        }, 500 );
+        }, 50 );
     }
 });

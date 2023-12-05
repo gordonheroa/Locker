@@ -8,7 +8,7 @@ fields.forEach(function(item) {
 	item.selected = true;
 	setTimeout( () => {
 	    item.checked = true;
-        }, 500 );
+        }, 50 );
         chrome.runtime.sendMessage({a:"b"});
     }
 });
